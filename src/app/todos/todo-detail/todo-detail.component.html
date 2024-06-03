@@ -1,0 +1,8 @@
+<div class="todo-details-container">
+    <h2>Todo Details</h2>
+    <p><strong>ID:</strong> {{ todo.id }}</p>
+    <p><strong>Title:</strong> {{ todo.title }}</p>
+    <p><strong>Completed:</strong> {{ todo.completed ? 'Yes' : 'No' }}</p>
+    <button class="btn btn-primary" (click)="goBack()">Back</button>
+  </div>
+  

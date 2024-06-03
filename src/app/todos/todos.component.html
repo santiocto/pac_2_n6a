@@ -2,7 +2,29 @@
   <h1 class="mt-5">Realizar la consigna debajo de este mensaje</h1>
 </div>
 
-<!-- Html faltante -->
+<div class="container mt-4">
+  <input 
+    type="text" 
+    class="form-control mb-2" 
+    [(ngModel)]="buscar"  
+  />
+</div>
 <div>
-  <button class="btn btn-primary" (click)="randomMethod()">Search</button>
+  <button class="btn btn-primary" 
+          (click)="searchTodos()" 
+          *ngIf="buscar.trim().length > 0">Search</button>
+</div>
+
+<div class="container mt-4">
+  <h2>Lista de Todos</h2>
+  <ul class="list-group" *ngIf="filteredTodos.length > 0; else noResults">
+    <li *ngFor="let todo of filteredTodos" class="list-group-item">
+      {{ todo.title }}
+      <button class="btn btn-secondary btn-sm float-right" 
+              [routerLink]="['/todos', todo.id]">View Details</button>
+    </li>
+  </ul>
+  <ng-template #noResults>
+    <p>No hay resultados para la búsqueda.</p>
+  </ng-template>
 </div>
